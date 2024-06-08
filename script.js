@@ -1,13 +1,12 @@
 // script.js
 
-document.addEventListener("DOMContentLoaded", function() {
-    const container = document.querySelector('.grid-container');
-    const resetButton = document.getElementById('resetButton');
+document.addEventListener("DOMContentLoaded", function() { // Ensures the script runs only after the DOM is fully loaded.
+    const container = document.querySelector('.grid-container'); // Select the grid container element
+    const resetButton = document.getElementById('resetButton');  // Select the reset button element
 
-    resetButton.addEventListener('click', function() {
-        const size = prompt("Enter the number of grids per side (maximum 100):");
-
-        if (size !== null && !isNaN(size) && size > 0 && size <= 100) {
+    resetButton.addEventListener('click', function() { // Click event listener to the reset button.
+        const size = prompt("Enter the number of grids per side (maximum 100):"); // Prompts the user to enter the grid size.
+        if (size !== null && !isNaN(size) && size > 0 && size <= 100) { // Validating the input and calls createGrid with the specified size if valid.
             createGrid(size);
         } else {
             alert("Please enter a valid number between 1 and 100.");
@@ -15,8 +14,8 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     function createGrid(size) {
-        // Clear the existing grid
-        container.innerHTML = '';
+        
+        container.innerHTML = ''; // Clear the existing grid
 
         // Set grid template columns and rows using fr units
         container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
@@ -24,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Create grid cells
         for (let i = 0; i < size * size; i++) {
-            const div = document.createElement('div');
+            const div = document.createElement('div'); 
             div.style.backgroundColor = 'rgb(144, 238, 144)'; // Light green for initial color
             div.style.transition = 'background-color 0.3s'; // Smooth transition
             div.setAttribute('data-darken-level', 0); // Initialize darken level
